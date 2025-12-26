@@ -982,13 +982,7 @@ const GameMode: React.FC<Props> = ({ onBack, settings, setHeaderConfig, updateSe
              </div>
           )}
 
-          {/* MISSING LETTER UI */}
-          {gameVariant === 'MISSING_LETTER' && (
-             <div className="mb-8">
-                <p className="text-sm text-slate-400 mb-4 uppercase tracking-wider">Complete the word</p>
-                <div className="text-4xl font-mono font-bold tracking-[0.2em] text-slate-800 dark:text-white uppercase">{maskedWord}</div>
-             </div>
-          )}
+          
 
           {/* MEMORY UI */}
           {gameVariant === 'MEMORY' && (
@@ -1010,7 +1004,16 @@ const GameMode: React.FC<Props> = ({ onBack, settings, setHeaderConfig, updateSe
               </div>
           )}
 
-          {/* HOMOPHONE UI */}
+        {/* MISSING LETTER UI */}
+          {gameVariant === 'MISSING_LETTER' && (
+             <div className="mb-8 w-full px-2">
+                <p className="text-sm text-slate-400 mb-4 uppercase tracking-wider">Complete the word</p>
+                {/* Fixed: Added break-all, responsive text size, and responsive tracking */}
+                <div className="text-2xl sm:text-3xl md:text-4xl font-mono font-bold tracking-widest md:tracking-[0.2em] text-slate-800 dark:text-white uppercase break-all">
+                  {maskedWord}
+                </div>
+             </div>
+          )}  {/* HOMOPHONE UI */}
           {gameVariant === 'HOMOPHONE' && (
              <div className="mb-8">
                <div className="text-xl font-medium text-slate-700 dark:text-slate-200 leading-relaxed bg-slate-50 dark:bg-slate-900/50 p-6 rounded-2xl border border-slate-100 dark:border-slate-700">{(currentChallenge as HomophoneChallenge).sentence}</div>
